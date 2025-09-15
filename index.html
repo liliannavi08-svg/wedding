@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Wedding of Ana & Andi</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: "Lora", Lora;
+    }
+
+    /* Background */
+    .hero {
+      width: 100%;
+      height: 100vh;
+      background-image: url("Undangan tanpa foto_20250915_091132_0000.png"); /* ganti dengan file gambar */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #591E1F;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    
+
+    .content {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+    }
+
+    /* Animasi fade-in up */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade {
+      opacity: 0;
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .wedding {
+      font-size: 20px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      animation-delay: 0.3s;
+    }
+
+    .names {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 25px;
+      animation-delay: 1s;
+    }
+
+    .tamu-label {
+      font-size: 18px;
+      margin-bottom: 5px;
+      animation-delay: 1.8s;
+    }
+
+    .tamu-nama {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      animation-delay: 2.2s;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background: #591E1F;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      animation-delay: 3s;
+    }
+
+    .btn:hover {
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="overlay"></div>
+    <div class="content">
+      <div class="wedding fade">The Wedding of</div>
+      <br></br>
+      <div class="names fade">Ana & Andi</div>
+      <br></br>
+      <div class="tamu-label fade">Kepada Yth.</div>
+      <div class="tamu-nama fade" id="namaTamu">Tamu Undangan</div>
+      <a href="https://rumaimpian123.my.canva.site/tanpa-foto" class="btn fade">Buka Undangan</a>
+    </div>
+  </div>
+
+  <script>
+    // Ambil parameter ?to= dari URL
+    const params = new URLSearchParams(window.location.search);
+    let nama = params.get("to");
+
+    if (nama) {
+      nama = nama.replace(/\+/g, " "); // ganti + jadi spasi
+      document.getElementById("namaTamu").textContent = nama;
+    }
+
+    // Mulai animasi setelah halaman load
+    window.onload = () => {
+      document.querySelectorAll('.fade').forEach(el => {
+        el.style.animationPlayState = "running";
+      });
+    };
+  </script>
+</body>
+</html>
+
